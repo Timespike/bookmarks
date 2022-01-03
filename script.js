@@ -35,6 +35,27 @@ function validate(nameValue, urlValue) {
     return true;
 }
 
+// Build Bookmarks DOM
+function buildBookmarks() {
+    // Build items
+    bookmarks.forEach((bookmark) => {
+        const { name, url } = bookmark;
+        // Item
+        const item = document.createElement('div');
+        item.classList.add('item');
+        // Close Icon
+        const closeIcom = document.createElement('i');
+        closeIcom.classList.add('fas', 'fa-times');
+        closeIcom.setAttribute('title', 'Delete Bookmark');
+        closeIcom.setAttribute('onclick', `deleteBookmark('${url}')`);
+        // Favicon / Link Container
+        const linkInfo = document.createElement('div');
+        linkInfo.classList.add('name');
+        // Favicon
+        const favicon = document.createElement('img');
+    });
+}
+
 // Fetch Bookmarks
 function fetchBookmarks() {
     // Get Bookmarks from localStorage if Available
@@ -50,7 +71,7 @@ function fetchBookmarks() {
         ];
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }
-    console.log(bookmarks);
+    buildBookmarks()
 }
 
 // Handle Data From Form
