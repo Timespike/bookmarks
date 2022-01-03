@@ -53,6 +53,17 @@ function buildBookmarks() {
         linkInfo.classList.add('name');
         // Favicon
         const favicon = document.createElement('img');
+        favicon.setAttribute('src', `https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
+        favicon.setAttribute('alt', 'Favicon');
+        // Link
+        const link = document.createElement('a');
+        link.setAttribute('href', `${url}`);
+        link.setAttribute('target', '_blank');
+        link.textContent = name; 
+        //  Append to Bookmarks Container
+        linkInfo.append(favicon, link);
+        item.append(closeIcom, linkInfo);
+        bookmarksContainer.appendChild(item);
     });
 }
 
